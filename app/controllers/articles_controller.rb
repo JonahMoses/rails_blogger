@@ -7,10 +7,13 @@ include ArticlesHelper
 
   def show
     @article = Article.find(params[:id])
+    @comment = Comment.new
+    @comment.article_id = @article.id
   end
 
   def new
     @article = Article.new
+    @comment = Comment.new
   end
 
   def create
@@ -41,5 +44,7 @@ include ArticlesHelper
     flash.notice = "Article '#{@article.title}' Updated!"
     redirect_to article_path(@article)
   end
+
+
 end
 
